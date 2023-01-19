@@ -1,3 +1,61 @@
-#mcu-app{
-    
+.wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+.knappar{
+    display: flex;
+    flex-direction: row;
+}
+#mcu-app{    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 50%;
+    padding: 15px;
+}
+
+.btn-nxt, .btn-pre {
+    text-align: center;
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    letter-spacing: 2px;
+    position:relative;
+    overflow:hidden;
+    margin: 0 20px;
+  }
+  
+  .btn-nxt:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background : #fff;
+    left: 0;
+    bottom: 0;
+    transition: all .3s;
+    opacity: 0.3;
+  }
+  
+  .btn-nxt:hover:before {
+    width: 100%;
+  }
+  
+  .btn-pre:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background : #fff;
+    left: 100%;
+    bottom: 0;
+    transition: all .3s;
+    opacity: 0.3;
+  }
+  
+  .btn-pre:hover:before {
+    width: 100%;
+    left:0;
+  }

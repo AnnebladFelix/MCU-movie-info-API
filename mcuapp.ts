@@ -12,15 +12,22 @@ const p = fetch(url)
         e.preventDefault();
         MCUEl.innerHTML = "";
         i++;
+        preBtn.disabled = false;
         foo();
     })
 
     preBtn.addEventListener('click', function(e){
         e.preventDefault();
         MCUEl.innerHTML = "";
-        i--;
         foo();
-
+        
+        if (i <= 0) {
+            preBtn.disabled = true;
+        }
+        if (i >= 1) {
+            preBtn.disabled = false;
+            i--
+        }
     })
 
     //for(let i = 0; i < marvel.data.length; i++){
@@ -28,30 +35,26 @@ const p = fetch(url)
         let div1 = document.createElement('div') as HTMLElement;
         let info = document.createElement('p') as HTMLParagraphElement;
         let release = document.createElement('p') as HTMLParagraphElement;
-        let img = document.createElement("img") as HTMLImageElement;
+        let img = document.createElement("div") as HTMLElement;
         let title = document.createElement('h2') as HTMLElement;
 
-         MCUEl.append(div1);
+        MCUEl.append(div1, title, info, release, img);
 
-         div1.className = 'card';
-        //  info.className = 'info hidden';
-        //  img.className = 'cover-img';
-        //  title.className = 'title hidden';
-        //  release.className = 'release hidden';
+        div1.className = 'card';
+        info.className = 'info hidden';
+        img.className = 'cover-img';
+        title.className = 'title hidden';
+        release.className = 'release hidden';
 
-         info.innerHTML = marvel.data[i].overview;
-         title.innerHTML = marvel.data[i].title;
-         release.innerHTML = marvel.data[i].release_date;
-         img.innerHTML = marvel.data[i].cover_url;
-         div1.append(title, info, img, release)
-         div1.innerHTML = (`Title: ${marvel.data[i].title} <br /> 
-         info: ${marvel.data[i].overview} <br /> 
-         release date: ${marvel.data[i].release_date}<br /> 
-         <img src="${marvel.data[i].cover_url}" class="cover-img">`);
+        info.innerHTML = marvel.data[i].overview;
+        title.innerHTML = marvel.data[i].title;
+        release.innerHTML = marvel.data[i].release_date;
+        img.innerHTML = marvel.data[i].cover_url;
+
+
+        //div1.innerHTML = (`Title: ${marvel.data[i].title} <br />`); 
+        info.innerHTML = (`info: ${marvel.data[i].overview} <br />`);
+        release.innerHTML = (`release date: ${marvel.data[i].release_date}<br />`); 
+        img.innerHTML = (`<img src="${marvel.data[i].cover_url}">`);
     }
-    // MCUEl.innerHTML = `Title: ${marvel.data[0].title} <br /> 
-    // info: ${marvel.data[0].overview} <br /> 
-    // release date: ${marvel.data[0].release_date} <br /> 
-    // <img src="${marvel.data[0].cover_url}" class="cover-img">
-    // `
 })
