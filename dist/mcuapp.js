@@ -8,17 +8,25 @@ const p = fetch(url)
     return response.json();
 }).then(marvel => {
     let i = -1;
+    console.log(i);
     nxtBtn.addEventListener('click', function (e) {
         e.preventDefault();
         MCUEl.innerHTML = "";
         i++;
         preBtn.disabled = false;
         foo();
+        if (i >= 39) {
+            nxtBtn.disabled = true;
+        }
+        if (i <= 38) {
+            nxtBtn.disabled = false;
+        }
     });
     preBtn.addEventListener('click', function (e) {
         e.preventDefault();
         MCUEl.innerHTML = "";
         foo();
+        nxtBtn.disabled = false;
         if (i <= 0) {
             preBtn.disabled = true;
         }
