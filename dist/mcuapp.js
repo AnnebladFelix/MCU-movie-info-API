@@ -8,7 +8,6 @@ const p = fetch(url)
     return response.json();
 }).then(marvel => {
     let i = -1;
-    console.log(i);
     nxtBtn.addEventListener('click', function (e) {
         e.preventDefault();
         MCUEl.innerHTML = "";
@@ -55,6 +54,6 @@ const p = fetch(url)
         //div1.innerHTML = (`Title: ${marvel.data[i].title} <br />`); 
         info.innerHTML = (`info: ${marvel.data[i].overview} <br />`);
         release.innerHTML = (`release date: ${marvel.data[i].release_date}<br />`);
-        img.innerHTML = (`<img src="${marvel.data[i].cover_url}">`);
+        img.innerHTML = (`<img class="cover" src="${marvel.data[i].cover_url}">`);
     };
 });
